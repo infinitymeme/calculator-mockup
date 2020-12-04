@@ -1,3 +1,175 @@
-body * {
-    margin: 0;
+@font-face {
+    font-family: SFMonoUltraLight;
+    src: url('./font/SFPro/TrueType/SFProDisplay-UltraLight.ttf');
+}
+@font-face {
+    font-family: SFMono;
+    src: url('./font/SFPro/TrueType/SFProText-Regular.ttf');
+}
+
+:root {
+    --cell-width: 77px;
+    --cell-height: 65px;
+    --window-backround-color: #2B2D2F;
+    --window-close-color: #FC5B57;
+    --window-minimize-color: #E5BF3C;
+    --window-maximize-color: #57C038;
+    --theme-neutral-secondary: #3F4143;
+    --theme-neutral-primary: #5F6062;
+    --theme-main-color: #FD9E2B;
+    --theme-text-color: #FCFCFC;
+    
+    --theme-font-light: SFMonoUltraLight, 'Comic Sans MS', sans-serif;
+    --theme-font-medium: SFMono, 'Comic Sans MS', sans-serif;
+    font-family: var(--theme-font-medium);
+}
+
+.calculator-widget {
+    position: absolute;
+    width: 313px;
+    height: 438px;
+    min-width: 161px;
+    min-height: 356px;
+    background: var(--window-backround-color);
+    border-radius: 5px;
+    box-shadow: 0px 20px 40px 10px rgba(0,0,0,0.5), inset 0 0 1px 1px var(--theme-neutral-primary);
+    border: 1px outset var(--theme-neutral-primary);
+    overflow: hidden;
+    resize: both;
+}
+.widget-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.widget-header {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    cursor: grab;
+}
+body.dragging * {
+    cursor: grabbing;
+}
+.window-button {
+    width: 16px;
+    height: 16px;
+    margin: 0px 3.5px;
+    border-radius: 9px;
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+}
+.window-button:focus {
+    outline: 0;
+}
+.window-close {
+    background: var(--window-close-color);
+    box-shadow: inset 0 0 1px 0px var(--window-backround-color),
+    0 0 1px 0px var(--window-close-color);
+}
+.window-minimize {
+    background: var(--window-minimize-color);
+    box-shadow: inset 0 0 1px 0px var(--window-backround-color),
+    0 0 1px 0px var(--window-minimize-color);
+}
+.window-maximize {
+    background: var(--window-maximize-color);
+    box-shadow: inset 0 0 1px 0px var(--window-backround-color),
+    0 0 1px 0px var(--window-maximize-color);
+}
+.text-input {
+    text-align: right;
+    color: var(--theme-text-color);
+    font-family: var(--theme-font-light);
+    font-weight: 100;
+    font-size: 66px;
+    padding-right: 16px;
+}
+.button-grid, .main-buttons, .operators, .cell-row, .numbers {
+    display: flex;
+    flex-basis: 1px;
+    flex-grow: 1;
+}
+.main-buttons {
+    flex-direction: column;
+    flex-grow: 3;
+}
+.operators {
+    flex-direction: column;
+}
+.numbers {
+    flex-grow: 4;
+    flex-direction: column-reverse;
+}
+
+
+.cell {
+    font-size: 28px;
+    font-weight: bold;
+    border: 0;
+    border-right: 1px solid var(--window-backround-color);
+    border-bottom: 1px solid var(--window-backround-color);
+    color: var(--theme-text-color);
+    background: var(--theme-neutral-primary);
+    font-family: var(--theme-font-light);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 1px;
+    padding: 0;
+}
+
+/* clear borders on outer edges */
+.cell-row:last-child .cell {
+    border-bottom: none;
+}
+.operators .cell {
+    border-right: none;
+}
+.operators .cell:last-child {
+    border-bottom: none;
+}
+
+/* double cell formatting */
+.cell.double-cell {
+    flex-grow: 2;
+    /* text-align: left; */
+    /* accounts for inbetween border */
+    border-left: 1px solid transparent; 
+}
+.cell.double-cell:after {
+    /* padding that doesn't affect flex */
+    content: ' ';
+    width: 50%;
+    display: inline-block;
+}
+
+/* cell coloring */
+.commands .cell {
+    background: var(--theme-neutral-secondary);
+    font-size: 24px;
+}
+.operators .cell {
+    background: var(--theme-main-color);
+    font-size: 40px;
+    font-weight: normal;
+}
+
+/* cell text icons */
+.plusminus:before {
+    content: '+';
+    position: relative;
+    top: -9px;
+    left: -1px;
+    font-size: 0.8em;
+}
+.plusminus:after {
+    content: '−';
+    position: relative;
+    bottom: 0px;
+    right: -4px;
+    font-size: 0.8em;
+}
+.allclear {
+    letter-spacing: 2px;
 }

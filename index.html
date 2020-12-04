@@ -5,11 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
     <main>
-
+        <section>
+            <h1>Welcome to floating calculator :D</h1>
+            <h3>Big Time Features:</h3>
+            <ul>
+                <li>Looks like mac os :)</li>
+                <li>Drag window navigation bar to move</li>
+                <li>Resizeable! :o</li>
+            </ul>
+            <h3>Soon to be Added:</h3>
+            <ul>
+                <li>Window control buttons do stuff</li>
+                <li>Hover and active styles for buttons</li>
+                <li>Actually work as a calculator</li>
+            </ul>
+        </section>
+        <section class="calculator-widget">
+            <div class="widget-body">
+                <div class="widget-header">
+                    <button class="window-button window-close"></button>
+                    <button class="window-button window-minimize"></button>
+                    <button class="window-button window-maximize"></button>
+                </div>
+                <div class="text-input">
+                    <span>0</span>
+                </div>
+                <div class="button-grid">
+                    <div class="main-buttons">
+                        <div class="cell-row commands">
+                            <button class="cell allclear">AC</button>
+                            <button class="cell">
+                                <span class="plusminus">&#x2044;</span>
+                            </button>
+                            <button class="cell">%</button>
+                        </div>
+                        <div class="cell-row">
+                            <button class="cell">7</button>
+                            <button class="cell">8</button>
+                            <button class="cell">9</button>
+                        </div>
+                        <div class="cell-row">
+                            <button class="cell">4</button>
+                            <button class="cell">5</button>
+                            <button class="cell">6</button>
+                        </div>
+                        <div class="cell-row">
+                            <button class="cell">1</button>
+                            <button class="cell">2</button>
+                            <button class="cell">3</button>
+                        </div>
+                        <div class="cell-row">
+                            <button class="cell double-cell">0</button>
+                            <button class="cell">.</button>
+                        </div>
+                    </div>
+                    <div class="operators">
+                        <button class="cell">&divide;</button>
+                        <button class="cell">&times;</button>
+                        <button class="cell">&minus;</button>
+                        <button class="cell">&plus;</button>
+                        <button class="cell">&equals;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+    <img src="476px-Calculator_on_macOS.png" style="position: absolute; bottom: 0; right: 0;">
+    <script src="script.js"></script>
 </body>
 </html>
