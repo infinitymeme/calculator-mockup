@@ -101,7 +101,7 @@ body.dragging * {
 }
 .button-grid, .main-buttons, .operators, .cell-row, .numbers {
     display: flex;
-    flex-basis: 1px;
+    flex-basis: 0px;
     flex-grow: 1;
 }
 .main-buttons {
