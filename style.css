@@ -29,7 +29,7 @@
     --window-maximize-color: #57C038;
     --theme-neutral-secondary: #3F4143;
     --theme-neutral-primary: #5F6062;
-    --theme-main-color: #FD9E2B;
+    --theme-main-color: #FF9F0C;
     --theme-text-color: #FCFCFC;
     
     --theme-font-light: SFMonoUltraLight, 'Comic Sans MS', sans-serif;
@@ -128,7 +128,7 @@ body.dragging * {
     font-family: var(--theme-font-light);
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: 1px;
+    flex-basis: 0px;
     padding: 0;
 }
 .cell:focus {
