@@ -110,6 +110,7 @@ body.dragging * {
 }
 .operators {
     flex-direction: column;
+    flex-basis: 2px; /* fixes a weird seam bug on resizing */
 }
 .numbers {
     flex-grow: 4;
