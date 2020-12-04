@@ -31,7 +31,7 @@
     --theme-neutral-primary: #5F6062;
     --theme-main-color: #FF9F0C;
     --theme-text-color: #FCFCFC;
-    /* button colors with 130% brightness filter, hardcoded for compatibility*/
+    /* button colors with 120% brightness filter, hardcoded for compatibility*/
     --theme-hover-neutral-secondary: #4c4e50;
     --theme-hover-neutral-primary: #727376;
     --theme-hover-main-color: #FFBE34;
