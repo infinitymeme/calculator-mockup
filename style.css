@@ -7,6 +7,21 @@
     src: url('./font/SFPro/TrueType/SFProText-Regular.ttf');
 }
 
+#mockup {
+    outline: 5px dashed rgba(27, 155, 155, 0.267);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+#mockup h2 {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    top: 10px;
+}
+
 :root {
     --cell-width: 77px;
     --cell-height: 65px;
@@ -118,6 +133,9 @@ body.dragging * {
     flex-basis: 1px;
     padding: 0;
 }
+.cell:focus {
+    outline: 0;
+}
 
 /* clear borders on outer edges */
 .cell-row:last-child .cell {
@@ -172,4 +190,30 @@ body.dragging * {
 }
 .allclear {
     letter-spacing: 2px;
+}
+
+/* button focus/hover formatting */
+.window-button:hover:after, .window-button:active:after {
+    content: ' ';
+    display: inline-block;
+    position: absolute;
+    margin-left: -8px;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.45);
+    mix-blend-mode: lighten;
+}
+.window-button:active:after {
+    mix-blend-mode: overlay;
+    box-shadow: inset 0 0 8px 0px var(--window-backround-color),
+    inset 0 0 8px 0px var(--window-backround-color);
+}
+
+.cell:hover, .cell:active {
+    filter: brightness(120%);
+}
+.cell:active {
+    box-shadow: inset 0 0 16px 0px rgba(0,0,0,0.45);
 }
