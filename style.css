@@ -23,8 +23,6 @@
 }
 
 :root {
-    --cell-width: 77px;
-    --cell-height: 65px;
     --window-backround-color: #2B2D2F;
     --window-close-color: #FC5B57;
     --window-minimize-color: #E5BF3C;
@@ -196,9 +194,6 @@ body.dragging * {
 .window-button:hover:after, .window-button:active:after {
     content: ' ';
     display: inline-block;
-    position: absolute;
-    margin-left: -8px;
-    margin-top: -8px;
     width: 16px;
     height: 16px;
     border-radius: 8px;
