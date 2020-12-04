@@ -3,7 +3,7 @@ function dragElement(windowclass) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     let header = document.querySelector(windowclass + " .widget-header");
     if (header) {
-      header.onmousedown = dragMouseDown;
+      header.addEventListener("mousedown", dragMouseDown);
     } else {
         throw new Error("Cannot find header element for "+windowclass);
     }
@@ -14,8 +14,8 @@ function dragElement(windowclass) {
             pos3 = e.clientX;
             pos4 = e.clientY;
             document.body.classList.add('dragging');
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
+            document.addEventListener("mouseup", closeDragElement);
+            document.addEventListener("mousemove", elementDrag);
             
         }
     }
@@ -32,8 +32,8 @@ function dragElement(windowclass) {
 
     function closeDragElement() {
         document.body.classList.remove('dragging');
-        document.onmouseup = null;
-        document.onmousemove = null;
+        document.removeEventListener("mouseup", closeDragElement);
+        document.removeEventListener("mousemove", elementDrag)
     }
 }
 dragElement(".calculator-widget");
