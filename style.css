@@ -31,6 +31,10 @@
     --theme-neutral-primary: #5F6062;
     --theme-main-color: #FF9F0C;
     --theme-text-color: #FCFCFC;
+    /* button colors with 130% brightness filter, hardcoded for compatibility*/
+    --theme-hover-neutral-secondary: #4c4e50;
+    --theme-hover-neutral-primary: #727376;
+    --theme-hover-main-color: #FFBE34;
     
     --theme-font-light: SFMonoUltraLight, 'Comic Sans MS', sans-serif;
     --theme-font-medium: SFMono, 'Comic Sans MS', sans-serif;
@@ -207,8 +211,15 @@ body.dragging * {
 }
 
 .cell:hover, .cell:active {
-    filter: brightness(120%);
+    background: var(--theme-hover-neutral-primary);
 }
+.commands .cell:hover, .commands .cell:active {
+    background: var(--theme-hover-neutral-secondary);
+}
+.operators .cell:hover, .operators .cell:active {
+    background: var(--theme-hover-main-color);
+}
+
 .cell:active {
     box-shadow: inset 0 0 16px 0px rgba(0,0,0,0.45);
 }
