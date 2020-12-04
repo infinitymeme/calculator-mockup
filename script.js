@@ -100,7 +100,7 @@ class CalculatorApp {
         if (this.numberOne == "0") {
             this.numberOne = "-"+this.numberOne;
         } else {
-            this.numberOne *= String(-1);
+            this.numberOne = String(this.numberOne * -1);
         }
         this.updateOutput();
     }
@@ -112,7 +112,7 @@ class CalculatorApp {
         this.numberOneFloat = this.numberOneFloat.split("");
         for (let i = 0; i < 2; i++) {
             this.numberOneFloat.unshift(this.numberOne.pop());
-            if (this.numberOne.length === 0) {
+            if ((this.numberOne.length === 0)||(this.numberOne[0] === "-")) {
                 this.numberOne.push("0");
             }
         }

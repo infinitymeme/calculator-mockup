@@ -23,18 +23,19 @@
 }
 
 :root {
-    --window-backround-color: #2B2D2F;
-    --window-close-color: #FC5B57;
-    --window-minimize-color: #E5BF3C;
-    --window-maximize-color: #57C038;
-    --theme-neutral-secondary: #3F4143;
-    --theme-neutral-primary: #5F6062;
-    --theme-main-color: #FF9F0C;
-    --theme-text-color: #FCFCFC;
+    --window-backround-color: #2b2d2f;
+    --window-close-color: #fc5b57;
+    --window-minimize-color: #e5bf3c;
+    --window-maximize-color: #57c038;
+    --theme-neutral-secondary: #3f4143;
+    --theme-neutral-primary: #5f6062;
+    --theme-main-color: #ff9f0c;
+    --theme-text-main: #fcfcfc;
+    --theme-text-colored: #ceae6c;
     /* button colors with 120% brightness filter, hardcoded for compatibility*/
     --theme-hover-neutral-secondary: #4c4e50;
     --theme-hover-neutral-primary: #727376;
-    --theme-hover-main-color: #FFBE34;
+    --theme-hover-main-color: #ffbe34;
     
     --theme-font-light: SFMonoUltraLight, 'Comic Sans MS', sans-serif;
     --theme-font-medium: SFMono, 'Comic Sans MS', sans-serif;
@@ -97,7 +98,7 @@ body.dragging * {
 }
 .calc-output {
     text-align: right;
-    color: var(--theme-text-color);
+    color: var(--theme-text-main);
     font-family: var(--theme-font-light);
     font-weight: 100;
     font-size: 66px;
@@ -107,6 +108,7 @@ body.dragging * {
 }
 .calc-output .extra-space {
     padding: 0px 8px;
+    color: var(--theme-text-colored);
 }
 .button-grid, .main-buttons, .operators, .cell-row, .numbers {
     display: flex;
@@ -132,7 +134,7 @@ body.dragging * {
     border: 0;
     border-right: 1px solid var(--window-backround-color);
     border-bottom: 1px solid var(--window-backround-color);
-    color: var(--theme-text-color);
+    color: var(--theme-text-main);
     background: var(--theme-neutral-primary);
     font-family: var(--theme-font-light);
     flex-grow: 1;
