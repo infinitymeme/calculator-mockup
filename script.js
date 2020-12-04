@@ -58,6 +58,8 @@ class CalculatorApp {
         document.querySelectorAll(`${windowclass} .main-buttons .cell-row:not(.commands) .cell`).forEach(el => {
             el.addEventListener("click", this.pressNumber.bind(this))
         });
+        //keypress doesn't accept backspace are you kidding me
+        this.widgetNode.addEventListener("keydown", this.keyboardPress.bind(this))
         this.updateOutput();
     }
 
@@ -207,6 +209,33 @@ class CalculatorApp {
             this.numberOneFloat = "";
         }
         this.clearOnNextNumber = false;
+    }
+
+    keyboardPress(event) {
+        //this is going to be very hacky and ugly.
+        //not only am I going to use an if chain,
+        //I'm going to pass in objects to functions set up to look like event objects
+        //so, for example, event.target.innerText will read the same as if it were an actual button event
+        //I'm sorry
+        if ((event.keyCode === 56)&&(event.shiftKey)) { // *
+            this.pressOperation({target:{classList:["op-multiply"]}});
+        } else if (event.keyCode === 191) { // /
+            this.pressOperation({target:{classList:["op-divide"]}});
+        } else if ((event.keyCode === 187)&&(event.shiftKey)) { // +
+            this.pressOperation({target:{classList:["op-add"]}});
+        } else if (event.keyCode === 189) { // -
+            this.pressOperation({target:{classList:["op-subtract"]}});
+        } else if ((event.keyCode === 53)&&(event.shiftKey)) { //%
+            this.pressPercent();
+        } else if ((event.keyCode >= 48)&&(event.keyCode <= 57)) { // 0-9
+            this.pressNumber({target:{innerText:event.keyCode-48}})
+        } else if ((event.keyCode === 8)||(event.keyCode === 46)) { //backspace, delete
+            this.pressClear();
+        } else if (event.keyCode === 13) { //enter
+            this.evaluateEquation();
+        } else if (event.keyCode === 190) { //.
+            this.pressNumber({target:{innerText:"."}});
+        }
     }
 
     evaluateEquation() {

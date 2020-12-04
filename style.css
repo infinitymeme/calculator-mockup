@@ -54,6 +54,7 @@
     border: 1px outset var(--theme-neutral-primary);
     overflow: hidden;
     resize: both;
+    outline: 0;
 }
 .widget-body {
     display: flex;
@@ -109,6 +110,21 @@ body.dragging * {
 .calc-output .extra-space {
     padding: 0px 8px;
     color: var(--theme-text-colored);
+}
+.calculator-widget:focus .calc-output:after, .calculator-widget:focus-within .calc-output:after {
+    content: ' ';
+    background: var(--theme-text-main);
+    position: absolute;
+    width: 1px;
+    margin-top: 12px;
+    margin-right: -2px;
+    height: 54px;
+    animation: cursor-blink 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+@keyframes cursor-blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
 }
 .button-grid, .main-buttons, .operators, .cell-row, .numbers {
     display: flex;
