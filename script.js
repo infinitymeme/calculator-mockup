@@ -231,13 +231,13 @@ class CalculatorApp {
         //I'm going to pass in objects to functions set up to look like event objects
         //so, for example, event.target.innerText will read the same as if it were an actual button event
         //I'm sorry
-        if ((event.keyCode === 56)&&(event.shiftKey)) { // *
+        if (((event.keyCode === 56)&&(event.shiftKey)) || (event.keyCode === 106)) { // * numpad*
             this.pressOperation({target:{classList:["op-multiply"]}});
-        } else if (event.keyCode === 191) { // /
+        } else if ((event.keyCode === 191)||(event.keyCode === 111)) { // / numpad/
             this.pressOperation({target:{classList:["op-divide"]}});
-        } else if ((event.keyCode === 187)&&(event.shiftKey)) { // +
+        } else if (((event.keyCode === 187)&&(event.shiftKey))||(event.keyCode === 107)) { // + numpad+
             this.pressOperation({target:{classList:["op-add"]}});
-        } else if (event.keyCode === 189) { // -
+        } else if ((event.keyCode === 189)||(event.keyCode === 109)) { // - numpad-
             this.pressOperation({target:{classList:["op-subtract"]}});
         } else if ((event.keyCode === 53)&&(event.shiftKey)) { //%
             this.pressPercent();
@@ -247,8 +247,10 @@ class CalculatorApp {
             this.pressClear();
         } else if ((event.keyCode === 13)||(event.keyCode === 187)) { //enter, =
             this.pressOperation({target:{classList:["op-equals"]}});
-        } else if (event.keyCode === 190) { //.
+        } else if ((event.keyCode === 190)||(event.keyCode === 110)) { //. numpad.
             this.pressNumber({target:{innerText:"."}});
+        } else if ((event.keyCode >= 96)&&(event.keyCode <= 105)) { // 0-9 numpad
+            this.pressNumber({target:{innerText:event.keyCode-96}})
         }
     }
 
