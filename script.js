@@ -89,6 +89,17 @@ class CalculatorApp {
         <span>${this.floatInput ? "." : ""}</span>
         <span>${this.numberOneFloat}</span>
         `
+        if (["256", "1337", "42"].indexOf(this.numberOne) >= 0) {
+            party.element(this.outputNode, {
+                count: 40,
+                countVariation: 0.5,
+                angleSpan: 80,
+                yVelocity: -300,
+                yVelocityVariation: 1,
+                rotationVelocityLimit: 6,
+                scaleVariation: 0.8,
+                });
+        }
     }
 
     //clear button
@@ -175,24 +186,27 @@ class CalculatorApp {
         this.updateOutput();
     }
 
+    //press a number button
     pressNumber(event) {
         this.inputRecieved(true);
         if (this.floatInput) {
-            if (event.target.innerText === ".") {
+            if (event.target.innerText === ".") { //toggle off decimal if double pressed
                 this.floatInput = false;
                 this.numberOne = String(parseInt(this.numberOne + String(this.numberOneFloat)));
                 this.numberOneFloat = "";
-            } else {
+            } else { //add to float instead
                 this.numberOneFloat = this.numberOneFloat + event.target.innerText;
             }
         } else {
-            if (event.target.innerText === ".") {
+            if (event.target.innerText === ".") { //enable decimal
                 if (this.numberOne === "") {
                     this.numberOne = "0";
                 }
                 this.floatInput = true;
+            } else {
+                this.numberOne = String(parseInt(this.numberOne + event.target.innerText));
             }
-            this.numberOne = String(parseInt(this.numberOne + event.target.innerText));
+            
         }
         
         this.updateOutput();
