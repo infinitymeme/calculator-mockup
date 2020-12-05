@@ -231,8 +231,8 @@ class CalculatorApp {
             this.pressNumber({target:{innerText:event.keyCode-48}})
         } else if ((event.keyCode === 8)||(event.keyCode === 46)) { //backspace, delete
             this.pressClear();
-        } else if (event.keyCode === 13) { //enter
-            this.evaluateEquation();
+        } else if ((event.keyCode === 13)||(event.keyCode === 187)) { //enter, =
+            this.pressOperation({target:{classList:["op-equals"]}});
         } else if (event.keyCode === 190) { //.
             this.pressNumber({target:{innerText:"."}});
         }
