@@ -317,7 +317,7 @@ class CalculatorApp {
         this.updateOutput();
     }
 
-    
+    //removes the calculator unless it's the last one on the document
     killCalculator() {
         if (calculators.length === 1) {
             const ow = ["Ouch!", "Hey!", "Stop it!", "That hurts!", ":'(", "＞︿＜", "≧ ﹏ ≦","╯^╰"]
@@ -330,10 +330,12 @@ class CalculatorApp {
             calculators.splice(calculators.indexOf(this), 1);
         }
     }
+    //resets the width and height of the calculator
     unsizeCalculator() {
         this.widgetNode.style.width = "";
         this.widgetNode.style.height = "";
     }
+    //duplicates the calculator but makes a new CalculatorApp for it
     cloneCalculator() {
         let newCalc = this.widgetNode.cloneNode(true); //deep clone
         document.body.appendChild(newCalc);
