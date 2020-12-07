@@ -261,6 +261,7 @@ class CalculatorApp {
         } else if ((event.keyCode >= 96)&&(event.keyCode <= 105)) { // 0-9 numpad
             this.pressNumber({target:{innerText:event.keyCode-96}})
         }
+        event.preventDefault();
     }
 
     evaluateEquation() {

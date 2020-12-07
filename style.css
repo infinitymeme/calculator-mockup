@@ -7,6 +7,10 @@
     src: url('./font/SFPro/TrueType/SFProText-Regular.ttf');
 }
 
+#party-js-canvas {
+    z-index: 999999;
+}
+
 #mockup {
     outline: 5px dashed rgba(27, 155, 155, 0.267);
     position: absolute;
