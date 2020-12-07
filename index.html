@@ -17,64 +17,67 @@
                 <li>Resizeable! :o</li>
                 <li>Hover and active styles for buttons</li>
                 <li>Actually work as a calculator</li>
+                <li>Window control buttons close, reset size, and make new calculator</li>
             </ul>
             <h3>Future Plans:</h3>
             <ul>
-                <li>Window control buttons do stuff? (maybe)</li>
+                <li>Nothing for now</li>
             </ul>
         </section>
-        <section class="calculator-widget" tabindex="0">
-            <div class="widget-body">
-                <div class="widget-header">
-                    <button class="window-button window-close"></button>
-                    <button class="window-button window-minimize"></button>
-                    <button class="window-button window-maximize"></button>
-                </div>
-                <div class="calc-output"></div>
-                <div class="button-grid">
-                    <div class="main-buttons">
-                        <div class="cell-row commands">
-                            <button class="cell cmd-clear">AC</button>
-                            <button class="cell cmd-plusminus">
-                                <span class="plusminus">&#x2044;</span>
-                            </button>
-                            <button class="cell cmd-percent">%</button>
-                        </div>
-                        <div class="cell-row">
-                            <button class="cell">7</button>
-                            <button class="cell">8</button>
-                            <button class="cell">9</button>
-                        </div>
-                        <div class="cell-row">
-                            <button class="cell">4</button>
-                            <button class="cell">5</button>
-                            <button class="cell">6</button>
-                        </div>
-                        <div class="cell-row">
-                            <button class="cell">1</button>
-                            <button class="cell">2</button>
-                            <button class="cell">3</button>
-                        </div>
-                        <div class="cell-row">
-                            <button class="cell double-cell">0</button>
-                            <button class="cell">.</button>
-                        </div>
-                    </div>
-                    <div class="operators">
-                        <button class="cell op-divide">&divide;</button>
-                        <button class="cell op-multiply">&times;</button>
-                        <button class="cell op-subtract">&minus;</button>
-                        <button class="cell op-add">&plus;</button>
-                        <button class="cell op-equals">&equals;</button>
-                    </div>
-                </div>
-            </div>
+        <section>
+            <span id="mockup">
+                <h2>Mockup Image</h2>
+                <img src="476px-Calculator_on_macOS.png">
+            </span>
         </section>
     </main>
-    <span id="mockup">
-        <h2>Mockup Image</h2>
-        <img src="476px-Calculator_on_macOS.png">
-    </span>
+    <aside class="calculator-widget" tabindex="0">
+        <div class="widget-body">
+            <div class="widget-header">
+                <button class="window-button window-close"></button>
+                <button class="window-button window-minimize"></button>
+                <button class="window-button window-maximize"></button>
+            </div>
+            <div class="calc-output"></div>
+            <div class="button-grid">
+                <div class="main-buttons">
+                    <div class="cell-row commands">
+                        <button class="cell cmd-clear">AC</button>
+                        <button class="cell cmd-plusminus">
+                            <span class="plusminus">&#x2044;</span>
+                        </button>
+                        <button class="cell cmd-percent">%</button>
+                    </div>
+                    <div class="cell-row">
+                        <button class="cell">7</button>
+                        <button class="cell">8</button>
+                        <button class="cell">9</button>
+                    </div>
+                    <div class="cell-row">
+                        <button class="cell">4</button>
+                        <button class="cell">5</button>
+                        <button class="cell">6</button>
+                    </div>
+                    <div class="cell-row">
+                        <button class="cell">1</button>
+                        <button class="cell">2</button>
+                        <button class="cell">3</button>
+                    </div>
+                    <div class="cell-row">
+                        <button class="cell double-cell">0</button>
+                        <button class="cell">.</button>
+                    </div>
+                </div>
+                <div class="operators">
+                    <button class="cell op-divide">&divide;</button>
+                    <button class="cell op-multiply">&times;</button>
+                    <button class="cell op-subtract">&minus;</button>
+                    <button class="cell op-add">&plus;</button>
+                    <button class="cell op-equals">&equals;</button>
+                </div>
+            </div>
+        </div>
+    </aside>
     <script src="script.js"></script>
     <script src="party.min.js"></script>
 </body>

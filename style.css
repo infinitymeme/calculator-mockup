@@ -106,6 +106,8 @@ body.dragging * {
     padding-right: 16px;
     display: flex;
     justify-content: flex-end;
+    height: 79px;
+    overflow: hidden;
 }
 .calc-output .extra-space {
     padding: 0px 8px;

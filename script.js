@@ -1,11 +1,14 @@
-function dragElement(windowclass) {
-    let elmnt = document.querySelector(windowclass);
+//makes a target node draggable via its .widget-header child
+function dragElement(widgetNode) {
+    if (!(widgetNode instanceof Node)) {
+        throw new Error("dragElement must be called on a Node object");
+    }
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    let header = document.querySelector(windowclass + " .widget-header");
+    let header = widgetNode.querySelector(".widget-header");
     if (header) {
       header.addEventListener("mousedown", dragMouseDown);
     } else {
-        throw new Error("Cannot find header element for "+windowclass);
+        throw new Error("Cannot find header element for "+widgetNode);
     }
   
     function dragMouseDown(e) {
@@ -26,8 +29,8 @@ function dragElement(windowclass) {
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        widgetNode.style.top = (widgetNode.offsetTop - pos2) + "px";
+        widgetNode.style.left = (widgetNode.offsetLeft - pos1) + "px";
     }
 
     function closeDragElement() {
@@ -36,30 +39,36 @@ function dragElement(windowclass) {
         document.removeEventListener("mousemove", elementDrag)
     }
 }
-dragElement(".calculator-widget");
 
 //object representing a calculator
 class CalculatorApp {
-    constructor(windowclass) {
-        this.widgetNode = undefined;
-        this.outputNode = undefined;
+    constructor(widgetNode) {
+        if (!(widgetNode instanceof Node)) {
+            throw new Error("CalculatorApp must be constructed with a Node object");
+            return;
+        }
+        this.widgetNode = widgetNode;
+        this.outputNode = this.widgetNode.querySelector(".calc-output");
         this.applyDefaults();
 
-        this.widgetNode = document.querySelector(windowclass);
-        this.outputNode = document.querySelector(`${windowclass} .calc-output`);
+        dragElement(this.widgetNode);
         
         //bind event listeners. .bind(this) makes this.method() work inside of event.
-        document.querySelectorAll(`${windowclass} .operators .cell`).forEach(el => {
+        this.widgetNode.querySelectorAll(".operators .cell").forEach(el => {
             el.addEventListener("click", this.pressOperation.bind(this))
         });
-        document.querySelector(`${windowclass} .cmd-clear`).addEventListener("click", this.pressClear.bind(this));
-        document.querySelector(`${windowclass} .cmd-plusminus`).addEventListener("click", this.pressPlusMinus.bind(this));
-        document.querySelector(`${windowclass} .cmd-percent`).addEventListener("click", this.pressPercent.bind(this));
-        document.querySelectorAll(`${windowclass} .main-buttons .cell-row:not(.commands) .cell`).forEach(el => {
+        this.widgetNode.querySelector(".cmd-clear").addEventListener("click",this.pressClear.bind(this));
+        this.widgetNode.querySelector(".cmd-plusminus").addEventListener("click", this.pressPlusMinus.bind(this));
+        this.widgetNode.querySelector(".cmd-percent").addEventListener("click", this.pressPercent.bind(this));
+        this.widgetNode.querySelectorAll(".main-buttons .cell-row:not(.commands) .cell").forEach(el => {
             el.addEventListener("click", this.pressNumber.bind(this))
         });
         //keypress doesn't accept backspace are you kidding me
         this.widgetNode.addEventListener("keydown", this.keyboardPress.bind(this))
+        //window button bindings
+        this.widgetNode.querySelector(".window-close").addEventListener("click", this.killCalculator.bind(this));
+        this.widgetNode.querySelector(".window-minimize").addEventListener("click", this.unsizeCalculator.bind(this));
+        this.widgetNode.querySelector(".window-maximize").addEventListener("click", this.cloneCalculator.bind(this));
         this.updateOutput();
     }
 
@@ -306,5 +315,31 @@ class CalculatorApp {
 
         this.updateOutput();
     }
+
+    
+    killCalculator() {
+        if (calculators.length === 1) {
+            const ow = ["Ouch!", "Hey!", "Stop it!", "That hurts!", ":'(", "＞︿＜", "≧ ﹏ ≦","╯^╰"]
+            let original = this.outputNode.innerText;
+            while (this.outputNode.innerText === original) {
+                this.outputNode.innerText = ow[Math.floor(Math.random()*ow.length)];
+            }
+        } else {
+            this.widgetNode.remove();
+            calculators.splice(calculators.indexOf(this), 1);
+        }
+    }
+    unsizeCalculator() {
+        this.widgetNode.style.width = "";
+        this.widgetNode.style.height = "";
+    }
+    cloneCalculator() {
+        let newCalc = this.widgetNode.cloneNode(true); //deep clone
+        document.body.appendChild(newCalc);
+        newCalc.style.top = (parseInt(newCalc.offsetTop) + 25)+"px";
+        newCalc.style.left = (parseInt(newCalc.offsetLeft) + 25)+"px";
+        calculators.push(new CalculatorApp(newCalc));
+    }
+
 }
-var myCalculator = new CalculatorApp(".calculator-widget");
+var calculators = [new CalculatorApp(document.querySelector(".calculator-widget"))];
